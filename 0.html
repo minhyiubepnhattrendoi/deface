@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.imgur.com/F6TbxnY.jpeg" type="image/x-icon">
+    <title>DEVELOPER HO DUC MINH</title>
+    <style>
+        body {
+            background-image: url('https://i.imgur.com/F6TbxnY.jpeg');
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .title {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 900px;
+            background-color: rgba(40, 40, 40, 0.8);
+            display: flex;
+            justify-content: space-between;
+        }
+        .left-panel, .right-panel {
+            width: 48%;
+            padding: 20px;
+        }
+        .divider {
+            border-left: 2px solid #444;
+            height: 100%;
+            margin: 0 10px;
+        }
+        .button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-green {
+            background-color: #28a745;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.425);
+            color: #1808f1;
+        }
+        .circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .green {
+            background-color: #28a745;
+        }
+        .yellow {
+            background-color: #ffc107;
+        }
+        .red {
+            background-color: #dc3545;
+        }
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        .countdown {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .gif-earth {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .attack-details {
+            text-align: left;
+        }
+        .gif-details {
+            width: 100%; 
+            max-width: 700px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">DEVELOPER HO DUC MINH</div>
+    <div class="container">
+        <div class="circle-container">
+            <span class="circle green"></span>
+            <span class="circle yellow"></span>
+            <span class="circle red"></span>
+        </div>
+        <div class="left-panel">
+            <h1>Attack Panel</h1>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWFyN2VzMXJtZGh1bXMxYWt4dmM5NzFzdWo1N3B4ZWg2NWt2ZGppMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26tn33aiTi1jkl6H6/giphy.gif" alt="Earth Rotating" class="gif-earth">
+            <form id="attack-form" action="/" method="post">
+                <input type="text" name="host" placeholder="Enter Host" required>
+                <input type="text" name="port" placeholder="Enter Port" required>
+                <input type="text" name="time" placeholder="Enter Time" required>
+                <button type="submit" class="button btn-green">Attack Start</button>
+            </form>
+        </div>
+        <div class="divider"></div>
+        <div class="right-panel">
+            <h1>Attack Details:</h1>
+            <div class="attack-details">
+                <p>Host: <span id="display-host"></span></p>
+                <p>Port: <span id="display-port"></span></p>
+                <p>Time Remaining: <span id="display-time">0</span></p>
+                <p>Note: Developer HoDucMinh
+            </div>
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExenNja2NnamxvZm5oZ2c5eHM0eHhwOWdzdGE2a21uN29xa3VmamdxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AeHLxU7TZXCPS/giphy.gif" alt="Details GIF" class="gif-details">
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById('attack-form');
+        const displayHost = document.getElementById('display-host');
+        const displayPort = document.getElementById('display-port');
+        const displayTime = document.getElementById('display-time');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            displayHost.textContent = form.host.value;
+            displayPort.textContent = form.port.value;
+            let time = form.time.value;
+            displayTime.textContent = time;
+
+            let countdown = setInterval(function () {
+                if (time > 0) {
+                    time--;
+                    displayTime.textContent = time;
+                } else {
+                    clearInterval(countdown);
+                }
+            }, 1000);
+            
+            form.submit();
+        });
+    </script>
+</body>
+</html>
